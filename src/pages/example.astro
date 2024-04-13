@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro"
+import {Counter} from '../components/react/Counter'
+---
+
+<Layout title="Example for react component">
+    <Counter initialValue={0} client:load />
+</Layout>
+
+
+<style>
+    body {
+        background-color: white;
+    }
+</style>
