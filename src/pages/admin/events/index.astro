@@ -1,0 +1,11 @@
+---
+import LayoutAdmin from "@layouts/LayoutAdmin.astro";
+import {CreateFormEvent} from "@components/react/admin/events/CreateForm"
+import {EventsContent} from '@components/react/admin/events/EventsContent'
+---
+
+<LayoutAdmin title="Eventos">
+    <h1 class="text-xl text-center">Eventos</h1>
+    <CreateFormEvent client:only/>
+    <EventsContent client:only/>
+</LayoutAdmin>
