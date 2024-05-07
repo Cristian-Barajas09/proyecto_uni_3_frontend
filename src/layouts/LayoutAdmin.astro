@@ -1,0 +1,41 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { Panel } from '@components/admin/layout/Panel'
+
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props
+
+
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sargento Pimiento Admin | {title}</title>
+    <ViewTransitions fallback='none'/>
+</head>
+<body class="">
+    <Panel transition:persist client:load />
+    <main class="w-[75%] absolute right-0 p-2 ">
+        <slot/>
+    </main>
+</body>
+</html>
+
+
+<style>
+    html {
+        scrollbar-color: rgba(0, 0, 0, 0.596) rgb(255, 255, 255);
+    }
+    body {
+        height: 100vh;
+        display: flex;
+    }
+</style>

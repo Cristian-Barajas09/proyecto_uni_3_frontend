@@ -1,0 +1,9 @@
+---
+import { EventsContent } from "@components/admin/events/EventsContent";
+import LayoutAdmin from "@layouts/LayoutAdmin.astro";
+---
+
+<LayoutAdmin title="Eventos">
+    <h1 class="text-center">Eventos</h1>
+    <EventsContent client:load/>
+</LayoutAdmin>

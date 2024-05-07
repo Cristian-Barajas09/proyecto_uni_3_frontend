@@ -1,0 +1,11 @@
+---
+import LayoutAdmin from "@layouts/LayoutAdmin.astro";
+import {PlatesContent} from '@components/admin/plates/PlatesContent'
+---
+
+<LayoutAdmin title="Platillos">
+    <h1 class="text-center">
+        Platillos
+    </h1>
+    <PlatesContent client:load />
+</LayoutAdmin>
