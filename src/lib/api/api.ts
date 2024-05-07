@@ -3,7 +3,7 @@ type options ={
     [key: string]: any
 }
 
-async function apiConnection<T, B=unknown>(route: string,method: string = "GET",body?: B): Promise<APIResponse<T>> {
+async function apiConnection<T>(route: string,method: string = "GET",body?: any): Promise<APIResponse<T>> {
     const options: options = {
         method
     }
@@ -17,8 +17,6 @@ async function apiConnection<T, B=unknown>(route: string,method: string = "GET",
     )
 
     const data = await response.json() as Promise<APIResponse<T>>
-
-    console.log(data);
     return data
 }
 

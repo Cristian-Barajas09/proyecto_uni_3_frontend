@@ -1,29 +1,15 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import Panel from '@components/astro/admin/Panel.astro'
-import ListContainer from '@components/astro/admin/ListContainer.astro'
-import ListItem from '@components/astro/admin/ListItem.astro'
-import FooterComponent from '@components/astro/admin/FooterComponent.astro'
+import { Panel } from '@components/admin/layout/Panel'
+
+
 interface Props {
     title: string;
 }
 
 const { title } = Astro.props
 
-const routes = [
-    {
-        title: "Eventos",
-        url: "/admin/events"
-    },
-    {
-        title: "Eventos",
-        url: "/admin/events"
-    },
-    {
-        title: "Eventos",
-        url: "/admin/events"
-    }
-]
+
 
 ---
 
@@ -35,18 +21,9 @@ const routes = [
     <title>Sargento Pimiento Admin | {title}</title>
     <ViewTransitions fallback='none'/>
 </head>
-<body>
-    <Panel transition:persist >
-        <ListContainer slot='content'>
-            {
-                routes.map(({title,url}) => (
-                    <ListItem title={title} url={url} />
-                ))
-            }
-        </ListContainer>
-        <FooterComponent slot='footer'/>
-    </Panel>
-    <main class="w-[75%] absolute right-0 p-2">
+<body class="">
+    <Panel transition:persist client:load />
+    <main class="w-[75%] absolute right-0 p-2 ">
         <slot/>
     </main>
 </body>
@@ -54,6 +31,9 @@ const routes = [
 
 
 <style>
+    html {
+        scrollbar-color: rgba(0, 0, 0, 0.596) rgb(255, 255, 255);
+    }
     body {
         height: 100vh;
         display: flex;

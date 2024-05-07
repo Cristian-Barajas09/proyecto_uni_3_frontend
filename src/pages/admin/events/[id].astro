@@ -1,12 +1,11 @@
 ---
+import { EventContent } from "@components/admin/events/event/EventContent";
 import LayoutAdmin from "@layouts/LayoutAdmin.astro";
-import { apiConnection } from "@lib/api/api";
-import { type IEvent } from "@lib/events/types.d";
-import {EventContent} from "@components/react/admin/events/EventContent";
 export const prerender = false;
 
 
-const {id} = Astro.params
+const id = Number(Astro.params.id)
+
 ---
 
 <LayoutAdmin title="Event">
@@ -14,6 +13,6 @@ const {id} = Astro.params
         Volver
     </a>
 
-    <EventContent id={id} client:load/>
+    <EventContent id={id} client:load />
 
 </LayoutAdmin>
