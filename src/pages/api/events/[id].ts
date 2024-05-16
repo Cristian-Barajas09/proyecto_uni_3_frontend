@@ -5,19 +5,83 @@ import  {type APIRoute } from "astro";
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({params}) => {
+export const GET: APIRoute = async ({params,request}) => {
 
+    const id = Number(params.id);
+    const token = request.headers.get('Authorization')
+
+    if(!token) {
+        return json({error: "No token provided"}, 401)
+    }
+
+    if (isNaN(id)) {
+        return json({error: "Invalid ID"}, 400)
+    }
+
+    const response = await fetch(
+        `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}`,
+        {
+            headers: {
+                'Authorization': token
+            }
+        }
+    )
+
+    const {data} = await response.json() as {data: IEvent}
+
+
+
+    return json(data)
+}
+
+export const DELETE: APIRoute = async ({params,request}) => {
+    const id = Number(params.id);
+
+    if (isNaN(id)) {
+        return json({error: "Invalid ID"}, 400)
+    }
+    try {
+        await fetch(
+            `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': request.headers.get('Authorization') ?? ''
+                }
+            }
+        )
+    } catch (error) {
+        return json({error: "Error deleting event"}, 400)
+    }
+
+    return json({message: "Event deleted"})
+}
+
+export const PUT: APIRoute = async ({params,request}) => {
     const id = Number(params.id);
 
     if (isNaN(id)) {
         return json({error: "Invalid ID"}, 400)
     }
 
-    const data = await apiConnection<IEvent>(
-        `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}`
-    )
+    const url = `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}/`
+    try {
+            const body = await request.formData()
 
+            const response = await fetch(`${url}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': request.headers.get('Authorization') || '',
+                },
+                body
+            })
+            if(!response.ok) {
+                throw new Error('Error al crear el evento ' + JSON.stringify(response.json()))
+            }
 
-
-    return json(data)
+            return json({message: 'Event created'})
+        } catch(err) {
+            console.log(err);
+            return json({error: 'Error al crear el evento'})
+        }
 }
