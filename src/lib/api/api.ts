@@ -3,18 +3,35 @@ type options ={
     [key: string]: any
 }
 
-async function apiConnection<T>(route: string,method: string = "GET",body?: any): Promise<APIResponse<T>> {
+async function apiConnection<T>(route: string,method: string = "GET",body?: any,initOptions: any = null): Promise<APIResponse<T>> {
     const options: options = {
-        method
+        method,
     }
 
-    if (body) {
-        options["body"] = JSON.stringify(body)
+    if (body ) {
+        if (body instanceof FormData) {
+            options.body = body;
+        } else {
+            options.body = JSON.stringify(body);
+            options.headers = {
+                'Content-Type': 'application/json'
+            }
+        }
     }
+
+    if(initOptions) {
+        Object.assign(options, initOptions)
+    }
+
+    console.log(options)
     const response = await fetch(
         route,
         options
     )
+
+    if (!response.ok) {
+        throw new Error("Error al realizar la petición")
+    }
 
     const data = await response.json() as Promise<APIResponse<T>>
     return data

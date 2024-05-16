@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import { Panel } from '@components/admin/layout/Panel'
-
+import { Panel } from '@components/admin/layout/Panel/Panel'
+import {LayoutContainer} from '@components/admin/layout/LayoutContainer'
 
 interface Props {
     title: string;
@@ -23,9 +23,9 @@ const { title } = Astro.props
 </head>
 <body class="">
     <Panel transition:persist client:load />
-    <main class="w-[75%] absolute right-0 p-2 ">
+    <LayoutContainer client:load>
         <slot/>
-    </main>
+    </LayoutContainer>
 </body>
 </html>
 

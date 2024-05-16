@@ -17,7 +17,6 @@ function AllContent({ data,page }:PropsWithChildren<Props>) {
         <div
             className="p-4 flex flex-col justify-center items-center "
         >
-            <h1>All Content</h1>
             <div
                 className="grid grid-cols-3 gap-2"
             >
