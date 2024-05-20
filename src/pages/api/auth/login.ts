@@ -8,6 +8,7 @@ export const POST: APIRoute = async ({request,cookies,redirect}) => {
     const { email, password } = await request.json()
     try {
         const url = `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.AUTH}/`
+        
         const res = await fetch(url, {
             method: 'POST',
             headers: {
@@ -15,6 +16,7 @@ export const POST: APIRoute = async ({request,cookies,redirect}) => {
             },
             body: JSON.stringify({ username:email, password })
         })
+        console.log(res)
 
         if (!res.ok) {
             throw new Error('Error al iniciar sesión')
@@ -32,6 +34,7 @@ export const POST: APIRoute = async ({request,cookies,redirect}) => {
             data
         }, 200)
     } catch(err) {
+        console.log(err)
         return json({
             error: "Error al iniciar sesión"
         }, 400)
