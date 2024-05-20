@@ -8,6 +8,19 @@ function SignIn() {
     const [error,setError] = React.useState("")
     const [token,setToken] = useCookies(['token'])
 
+    React.useEffect(() => {
+        if(token.token) {
+            navigate('/')
+        }
+
+        return () => {
+            setEmail('')
+            setPassword('')
+            setError('')
+        }
+    },[])
+
+
 
     const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setEmail(e.target.value)
@@ -32,8 +45,6 @@ function SignIn() {
             setToken('token',data.access)
             return navigate('/')
         })
-
-
     }
 
     return (

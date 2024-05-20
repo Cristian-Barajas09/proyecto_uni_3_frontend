@@ -1,12 +1,39 @@
-<header>
+---
+const routes = [
+    {
+        url: "/",
+        title: "INICIO",
+    },
+    {
+        url: "/menu",
+        title: "MENÚ",
+    },
+    {
+        url: "/gallery",
+        title: "GALERIA",
+    },
+    {
+        url: "/events",
+        title: "EVENTOS",
+    }
+]
+---
+<header class="bg-black flex justify-between p-2 mb-2">
     <nav>
-        <ul>
-            <li>
-                <a href="/">Inicio</a>
-            </li>
-            <li>
-                <a href="/menu">Menu</a>
-            </li>
-        </ul>
+            <ul class="flex text-white gap-4 p-2 items-center">
+                {
+                    routes.map(({title,url}) => (
+                        <li
+                        >
+                            <a href={url}>{title}</a>
+                        </li>
+                    ))
+                }
+            </ul>
     </nav>
+    <div class="w-20">
+        <a href="/">
+            <img src="/logo_footer.png" alt="">
+        </a>
+    </div>
 </header>

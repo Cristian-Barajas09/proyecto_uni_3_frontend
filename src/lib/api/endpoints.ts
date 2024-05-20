@@ -4,6 +4,7 @@ const ENDPOINTS = {
     EVENTS: "events",
     AUTH: 'token',
     USER: 'users',
+    PLATES: 'plates',
 }
 
 
