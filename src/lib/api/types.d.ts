@@ -9,3 +9,11 @@ export type IEvent = {
     description: string;
     date: string;
 }
+
+export type IPlate = {
+    id: number,
+	title: string,
+	description: string,
+	image: string,
+	price: string | number
+}

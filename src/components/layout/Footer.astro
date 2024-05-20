@@ -1,0 +1,40 @@
+---
+import { InstagramIcon } from "@components/icons/InstagramIcon";
+import { ShowDate } from "./ShowDate";
+import { WhatsAppIcon } from "@components/icons/WhatsAppIcon";
+---
+
+<footer class="bg-black text-white w-full">
+    <div class="flex justify-evenly p-10">
+        <div>
+            <a href="/">
+                <img src="/logo_footer.png" alt="">
+            </a>
+        </div>
+        <div class="flex flex-col gap-5">
+            <div>
+                REDES
+                <ul>
+                    <li class="flex items-center">
+                        <InstagramIcon />
+                        @sargentopimienta_sc
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                CONTACTO
+                <ul>
+                    <li class="flex items-center">
+                        <WhatsAppIcon />
+                        +58 412-5290290
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <span class="">
+            Copyright &copy; <ShowDate /> Sargento Pimienta 2.0 - Todos los Derechos Reservados.  
+        </span>
+    </div>
+</footer>
