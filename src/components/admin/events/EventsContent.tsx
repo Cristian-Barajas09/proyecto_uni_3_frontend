@@ -6,6 +6,7 @@ import { navigate } from 'astro:transitions/client'
 import { $createItem } from '@store/admin'
 import { useStore } from '@nanostores/react'
 
+
 function EventsContent() {
     const [ token ] = useCookies(["token"])
     const [events, setEvents] = React.useState<IEvent[]>([])
@@ -32,28 +33,33 @@ function EventsContent() {
     },[createItem])
 
     return (
-        <div className='mt-5'>
-            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {
-                    events.map((event) => (
-                        <button
-                            type='button'
-                            title={event.title}
-                            key={event.id}
-                            className='border border-gray-200 p-4'
-                            onClick={() => navigate(`/admin/events/${event.id}`)}
-                        >
+        <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4'>
+            {
+                events.map((event) => (
+                    <div className="card w-64 bg-base-100 shadow-xl">
+                        <figure>
                             <img
                                 src={event.image}
-                                alt=""
-                                className='object-cover w-full h-40'
+                                alt="Shoes"
+                                className='rounded-t-lg w-full h-48 object-cover'
                             />
-                            <h2>{event.title}</h2>
-                            <p>{event?.description}</p>
-                        </button>
-                    ))
-                }
-            </section>
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">
+                                {event.title}
+                            </h2>
+                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary" onClick={
+                                    () => navigate(`/admin/events/${event.id}`)
+                                }>
+                                    Ver mas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     )
 }
