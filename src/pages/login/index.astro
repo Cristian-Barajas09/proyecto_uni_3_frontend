@@ -2,9 +2,9 @@
 import Layout from "@layouts/Layout.astro"
 import {SignIn} from '@components/login/Signin.tsx'
 export const prerender = false
+
 ---
 
 <Layout title="Ingresar">
     <SignIn client:load />
-    
 </Layout>
