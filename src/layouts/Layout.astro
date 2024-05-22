@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Navbar from '@components/layout/Navbar.astro';
 import FooterComponent from '@components/layout/Footer.astro';
+
 interface Props {
 	title: string;
 }
@@ -21,10 +22,10 @@ const { title } = Astro.props;
 		<title>{title} | Sargento Pimienta 2.0</title>
 	</head>
 	<body>
-		<Navbar />
-		<main>
-			<slot />
-		</main>
-		<FooterComponent />
+			<Navbar />
+			<main>
+				<slot />
+			</main>
+			<FooterComponent />
 	</body>
 </html>

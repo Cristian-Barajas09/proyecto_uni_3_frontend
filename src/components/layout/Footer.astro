@@ -1,40 +1,29 @@
 ---
-import { InstagramIcon } from "@components/icons/InstagramIcon";
-import { ShowDate } from "./ShowDate";
-import { WhatsAppIcon } from "@components/icons/WhatsAppIcon";
+    import { ShowDate } from "./ShowDate";
 ---
-
-<footer class="bg-black text-white w-full">
-    <div class="flex justify-evenly p-10">
-        <div>
-            <a href="/">
-                <img src="/logo_footer.png" alt="">
-            </a>
-        </div>
-        <div class="flex flex-col gap-5">
-            <div>
-                REDES
-                <ul>
-                    <li class="flex items-center">
-                        <InstagramIcon />
-                        @sargentopimienta_sc
-                    </li>
-                </ul>
-            </div>
-            <div class="">
-                CONTACTO
-                <ul>
-                    <li class="flex items-center">
-                        <WhatsAppIcon />
-                        +58 412-5290290
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="text-center">
-        <span class="">
-            Copyright &copy; <ShowDate /> Sargento Pimienta 2.0 - Todos los Derechos Reservados.  
-        </span>
-    </div>
+<footer class="footer p-10 bg-base-200 text-base-content">
+    <aside>
+        <img src='/logo_footer.png' alt="">
+        <p>Sargento Pimienta 2.0<br>&copy; Copyright <ShowDate client:load/> </p>
+    </aside>
+    <nav>
+        <h6 class="footer-title">Services</h6> 
+        <a class="link link-hover">Branding</a>
+        <a class="link link-hover">Design</a>
+        <a class="link link-hover">Marketing</a>
+        <a class="link link-hover">Advertisement</a>
+    </nav>
+    <nav>
+        <h6 class="footer-title">Company</h6> 
+        <a class="link link-hover">About us</a>
+        <a class="link link-hover">Contact</a>
+        <a class="link link-hover">Jobs</a>
+        <a class="link link-hover">Press kit</a>
+    </nav>
+    <nav>
+        <h6 class="footer-title">Legal</h6> 
+        <a class="link link-hover">Terms of use</a>
+        <a class="link link-hover">Privacy policy</a>
+        <a class="link link-hover">Cookie policy</a>
+    </nav>
 </footer>

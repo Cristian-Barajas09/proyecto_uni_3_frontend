@@ -1,6 +1,6 @@
 import type { IPlate } from "@lib/api/types"
-import { navigate } from "astro:transitions/client"
 import React from "react"
+import { CardAdmin } from "../CardAdmin"
 
 function PlatesContent() {
 
@@ -23,28 +23,17 @@ function PlatesContent() {
     }, [])
 
     return (
-        <div className='mt-5'>
-            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {
-                    plates.map((plate) => (
-                        <button
-                            type='button'
-                            title={plate.title}
-                            key={plate.id}
-                            className='border border-gray-200 p-4'
-                            onClick={() => navigate(`/admin/plates/${plate.id}`)}
-                        >
-                            <img
-                                src={plate.image}
-                                alt=""
-                                className='object-cover w-full h-40'
-                            />
-                            <h2>{plate.title}</h2>
-                            <p>{plate?.description}</p>
-                        </button>
-                    ))
-                }
-            </section>
+        <div className='w-full grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4'>
+            {
+                plates.map(({title,id,image}) => (
+                    <CardAdmin
+                        title={title}
+                        id={id}
+                        image={image}
+                        type='plates'
+                    />
+                ))
+            }
         </div>
     )
 }
