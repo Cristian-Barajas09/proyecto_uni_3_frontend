@@ -18,8 +18,9 @@ function FormCreate() {
         date: '',
         image: null
     })
+
     const [token] = useCookies(['token'])
-    
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -44,13 +45,13 @@ function FormCreate() {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method='dialog'>
             <label htmlFor="">Titulo</label>
 
             <input
                 type="text"
                 placeholder="Event Title"
-                className="w-full p-2 border border-gray-300 rounded mb-4"
+                className="input w-full p-2 border border-gray-300 rounded mb-4"
                 onChange={(e) => {
                     setForm({
                         ...form,
@@ -62,7 +63,7 @@ function FormCreate() {
 
             <textarea
                 placeholder="Event Description"
-                className="w-full p-2 border border-gray-300 rounded mb-4"
+                className="text-area w-full p-2 border border-gray-300 rounded mb-4"
                 onChange={(e) => {
                     setForm({
                         ...form,
@@ -76,7 +77,7 @@ function FormCreate() {
                 type="date"
                 id="form-date"
                 title="Event Date"
-                className="w-full p-2 border border-gray-300 rounded mb-4"
+                className="input w-full p-2 border border-gray-300 rounded mb-4"
                 onChange={(e) => {
                     const formatDate = new Date(e.target.value).toISOString().split('T')[0]
                     setForm({
@@ -90,7 +91,7 @@ function FormCreate() {
             <input
                 type="file"
                 title="Event Image"
-                className="w-full p-2 border border-gray-300 rounded mb-4"
+                className="file-input w-full p-2 border border-gray-300 rounded mb-4"
                 onChange={(e) => {
                     setForm({
                         ...form,
@@ -101,10 +102,10 @@ function FormCreate() {
             />
 
             <button
-                type="submit"
-                className="bg-red-500 text-white p-2 rounded hover:shadow-lg"
-            >
-                Crear evento
+                    type="submit"
+                    className="btn bg-red-500 text-white p-2 rounded hover:shadow-lg"
+                >
+                    Crear evento
             </button>
         </form>
     )
