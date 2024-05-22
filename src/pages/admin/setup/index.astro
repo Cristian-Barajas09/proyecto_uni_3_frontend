@@ -1,4 +1,5 @@
 ---
+import { ConfigContent } from "@components/admin/config/ConfigContent";
 import LayoutAdmin from "@layouts/LayoutAdmin.astro";
 
 ---
@@ -7,4 +8,5 @@ import LayoutAdmin from "@layouts/LayoutAdmin.astro";
     <h1>
         Configuración
     </h1>
+    <ConfigContent client:load />
 </LayoutAdmin>

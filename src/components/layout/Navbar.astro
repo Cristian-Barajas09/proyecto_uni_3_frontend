@@ -15,25 +15,28 @@ const routes = [
     {
         url: "/events",
         title: "EVENTOS",
+    },
+    {
+        url: '/login',
+        title: "INICIAR SESIÓN"
     }
 ]
 ---
-<header class="bg-black flex justify-between p-2 mb-2">
-    <nav>
-            <ul class="flex text-white gap-4 p-2 items-center">
+<header class="navbar bg-base-100">
+    <div class="flex-1">
+        <a class="btn btn-ghost text-xl">
+            <img src="/logo_footer.png" class="w-full h-full object-cover"/>
+        </a>
+    </div>
+    <div class="flex">
+        <ul class="lg:flex">
+            <li>
                 {
-                    routes.map(({title,url}) => (
-                        <li
-                        >
-                            <a href={url}>{title}</a>
-                        </li>
+                    routes.map((route) => (
+                        <a href={route.url} class="btn btn-ghost">{ route.title }</a>
                     ))
                 }
-            </ul>
-    </nav>
-    <div class="w-20">
-        <a href="/">
-            <img src="/logo_footer.png" alt="">
-        </a>
+            </li>
+        </ul>
     </div>
 </header>

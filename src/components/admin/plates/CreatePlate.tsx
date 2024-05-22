@@ -1,11 +1,10 @@
-
+import { CrossIcon } from "@components/icons/CrossIcon";
+import { useStore } from "@nanostores/react";
+import { $createItem } from "@store/admin";
 import React from "react";
 import { FormCreate } from "./FormCreate";
-import { $createItem } from "@store/admin";
-import { useStore } from "@nanostores/react";
-import { CrossIcon } from "@components/icons/CrossIcon";
 
-function CreateEvent() {
+function CreatePlate() {
     const createItem = useStore($createItem);
 
     React.useEffect(() => {
@@ -29,8 +28,6 @@ function CreateEvent() {
         const btnClose = document.getElementById("form-event-create") as HTMLDialogElement
         btnClose.close()
     }
-
-
     return (
         <>
             <div className="w-full flex justify-end">
@@ -39,16 +36,16 @@ function CreateEvent() {
                     onClick={handleClick}
                     className="bg-red-500 text-white p-2 rounded hover:shadow-lg"
                 >
-                    Crear evento
+                    Crear Platillo
                 </button>
             </div>
-            <dialog 
+            <dialog
                 id="form-event-create"
                 className="modal modal-bottom sm:modal-middle"
             >
-                <div className="modal-box ">
+                <div className="modal-box">
                     <div className="flex justify-between m-2">
-                        <h3 className="font-bold text-lg">Crear Evento</h3>
+                        <h3 className="font-bold text-lg">Crear Platillo</h3>
                         <button 
                             className='font-bold'
                             onClick={handleClose}
@@ -60,10 +57,9 @@ function CreateEvent() {
                 </div>
             </dialog>
         </>
-    );
+    )
 }
 
-
 export {
-    CreateEvent
+    CreatePlate
 }

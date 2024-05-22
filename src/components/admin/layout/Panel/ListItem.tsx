@@ -13,10 +13,10 @@ function ListItem({url,title,Icon}: PropsWithChildren<Props>) {
     const collapsed = useStore($collapsedMenu);
     return (
         <li
-            className="p-2 w-full hover:bg-white hover:text-black duration-500"
+            className=""
         >
-            <a href={url} className="flex items-center justify-start gap-2">
-                <span className="">
+            <a href={url} className="">
+                <span className="p-2">
                     {Icon && <Icon />}
                 </span>
                 <span className="max-sm:hidden">
