@@ -3,7 +3,7 @@ export interface APIResponse<T> {
 }
 
 export type IEvent = {
-    id?: number;
+    id: number;
     title: string;
     image: string;
     description: string;

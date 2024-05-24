@@ -1,14 +1,11 @@
 import React, { type PropsWithChildren } from 'react'
-import { apiConnection } from '@lib/api/api'
 import type { IEvent } from '@lib/api/types'
 import { useCookies } from 'react-cookie'
-import { navigate } from 'astro:transitions/client'
 import { $createItem } from '@store/admin'
 import { useStore } from '@nanostores/react'
-import { CardAdmin } from '../CardAdmin'
+import { CarrouselContent, CarrouselLinks } from './CarrouselContent'
 
-
-function EventsContent() {
+function Carrousel() {
     const [ token ] = useCookies(["token"])
     const [events, setEvents] = React.useState<IEvent[]>([])
     const createItem = useStore($createItem)
@@ -21,7 +18,6 @@ function EventsContent() {
                 },
             })
 
-
             const data = await response.json() as IEvent[]
             setEvents(data)
         }
@@ -33,24 +29,42 @@ function EventsContent() {
             setEvents([])
         }
     },[createItem])
+    const sortedEvents = events.sort((a, b) => a.id - b.id);
+
+    // Get the latest 4 events
+    const latestEvents = sortedEvents.slice(0, 2);
 
     return (
-        <div className='w-full grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4'>
-            {
-                events.map(({title,id,image}) => (
-                    <CardAdmin
+        <div>
+            <div className="carousel w-full h-96">
+
+        {
+            latestEvents.map(({title,id,image,date,description}) => (
+                    <CarrouselContent
                         title={title}
                         id={id}
                         image={image}
-                        type='events'
-                    />
+                        description={description}
+                        date={date}
+                        />
                 ))
             }
-        </div>
+
+            </div>
+            <div className="flex justify-center w-full py-2 gap-2">
+
+{
+    latestEvents.map(({id}) => (
+        <CarrouselLinks
+                        id={id}
+                        />
+                    ))
+                }
+                </div>
+    
+    </div>
     )
 }
 
 
-export {
-    EventsContent
-}
+export default Carrousel
