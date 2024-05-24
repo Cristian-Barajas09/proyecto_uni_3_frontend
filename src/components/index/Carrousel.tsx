@@ -20,7 +20,7 @@ function Carrousel() {
                 },
             })
 
-            const { data } = await response.json() as {data:IEvent[]}
+            const data = await response.json() as IEvent[]
             setEvents(data)
         }
 
