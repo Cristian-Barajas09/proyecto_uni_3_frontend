@@ -1,7 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro"
 export const prerender = false;
-
+const menuItems = [
+    {
+        img: '/image_menu/020_cuba_libre.jpg',
+        title: 'Cuba Libre',
+        price: '3.5',
+        ingredients:[
+            'Ron blanco', 'limón', 'azúcar','coca cola'
+        ]
+    },
+]
 ---
 
 <Layout title="Menu">
@@ -205,12 +214,7 @@ export const prerender = false;
 
         <div class="md:grid grid-cols-3"> 
 
-                <div class="w-3/4 h-auto mx-auto bg-blue-500 m-1 text-center sm:justify-evenly w-80 md:justify-evenly w-80">
-                    <img class="h-80 w-auto" src="/public/image_menu/020_cuba_libre.jpg" alt="">
-                    <h2>Cuba Libre</h2>
-                    <p>3.5$</p>
-                    <p>Ron dorado, limón, amargo de angostura, coca cola.</p>
-            </div>
+                
             <div class="w-3/4 h-auto mx-auto bg-blue-500 m-1 text-center sm:justify-evenly w-40 md:justify-evenly w-80">
                     <img class="h-80 w-full" src="/public/image_menu/021_mojito.jpg" alt="">
                     <h2>Mojito</h2>
