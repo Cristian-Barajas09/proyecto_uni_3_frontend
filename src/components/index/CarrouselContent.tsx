@@ -34,7 +34,7 @@ function CarrouselContent(
         <p className="text-center">{title}</p>
         <p>{description}</p>
         <div className=" flex justify-between">
-        <button className="link link-info" onClick={
+        <button className="link link-warning" onClick={
                         () => navigate(`events/${id}`)
                     }>
                         Ver más...
