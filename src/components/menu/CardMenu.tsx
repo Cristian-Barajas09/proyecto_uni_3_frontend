@@ -3,16 +3,25 @@ import type { PropsWithChildren } from "react";
 interface CardMenuProps {
     title: string;
     price: number;
-    description: string;
-    image: string;
+    ingredients: string[];
+    image?: string;
 }
-function CardMenu({}: PropsWithChildren<CardMenuProps>) {
+function CardMenu(props: PropsWithChildren<CardMenuProps>) {
     return (
-        <div className="w-3/4 h-auto mx-auto bg-blue-500 m-1 text-center sm:justify-evenly w-80 md:justify-evenly w-80">
-            <img className="h-80 w-auto" src="/public/image_menu/020_cuba_libre.jpg" alt=""/>
-            <h2></h2>
-            <p>$</p>
-            <p></p>
+        <div className="card bg-base-100 shadow-2xl lg:shadow-none p-2 lg:p-0">
+            <figure>
+                <img
+                    className="h-80 w-auto object-cover object-center rounded-box lg:rounded-none lg:h-64"
+                    src={props.image || '404.jpg'}
+                    alt={props.title}
+                />
+            </figure>
+            <div className="card-body">
+
+                <h2 className="card-title">{props.title}</h2>
+                <p>{props.price} $</p>
+                <p>{props.ingredients.join(', ')}</p>
+            </div>
         </div>
     )
 }

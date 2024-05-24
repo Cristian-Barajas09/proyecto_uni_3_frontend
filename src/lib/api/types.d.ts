@@ -17,3 +17,13 @@ export type IPlate = {
 	image: string,
 	price: string | number
 }
+
+export type IMenu = {
+    id: number;
+    image: string;
+    title: string;
+    price: number;
+    ingredients: string[];
+    categories: string[];
+    description: string;
+}

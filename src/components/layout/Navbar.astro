@@ -1,4 +1,7 @@
 ---
+import { MenuButton } from "./MenuButton.tsx"
+
+
 const routes = [
     {
         url: "/",
@@ -7,10 +10,6 @@ const routes = [
     {
         url: "/menu",
         title: "MENÚ",
-    },
-    {
-        url: "/gallery",
-        title: "GALERIA",
     },
     {
         url: "/events",
@@ -22,21 +21,27 @@ const routes = [
     }
 ]
 ---
-<header class="navbar bg-base-100">
-    <div class="flex-1">
-        <a class="btn btn-ghost text-xl">
+<header class="navbar bg-base-100 fixed z-10 lg:static p-3 justify-between">
+    <div class="">
+        <a class="btn btn-ghost text-xl" href="/">
             <img src="/logo_footer.png" class="w-full h-full object-cover"/>
         </a>
     </div>
-    <div class="flex">
-        <ul class="lg:flex">
-            <li>
-                {
-                    routes.map((route) => (
-                        <a href={route.url} class="btn btn-ghost">{ route.title }</a>
-                    ))
-                }
-            </li>
+    <div class="m-2 lg:hidden">
+        <MenuButton client:load/>
+    </div>
+    <div class="hidden lg:block lg:w-1/2 lg:h-full w-full h-screen" id="navbar-menu">
+        <ul class="flex flex-col lg:flex-row">
+            {
+                routes.map((route) => (
+                    <li>
+                        <a
+                            href={route.url}
+                            class="btn btn-ghost"
+                        >{ route.title }</a>
+                    </li>
+                ))
+            }
         </ul>
     </div>
 </header>
