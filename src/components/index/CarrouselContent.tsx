@@ -4,11 +4,18 @@ interface Props {
     title: string;
     image: string;
     id?: number|unknown;
-    type: string;
     date?: string;
     description: string;
 }
 
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    
+    return `${day}/${month}/${year}`;
+  };
 
 function CarrouselContent(
     {
@@ -16,23 +23,23 @@ function CarrouselContent(
         image,
         description,
         id,
-        date,
-        type
-    }:PropsWithChildren<Props>
-) {
+        date
+    }:PropsWithChildren<Props>,
+) 
+{
     return (
-    <div id={id as string} className="carousel-item relative w-full bg-base-200">
-    <img src={image ?? '/404.jpeg'} alt={title} className="w-2/3" />
-    <div className= "flex flex-col w-1/3 p-4 justify-around">
-        <p>{title}</p>
+    <div id={id as string} className="carousel-item relative w-full bg-base-200 flex flex-col md:flex-row h-full">
+    <img src={image ?? '/404.jpeg'} alt={title} className="md:w-1/2 w-full h-100" />
+    <div className= "flex flex-col md:w-1/2 w-full p-4 justify-around">
+        <p className="text-center">{title}</p>
         <p>{description}</p>
         <div className=" flex justify-between">
-        <button className="btn btn-info" onClick={
-                        () => navigate(`/${type}/${id}`)
+        <button className="link link-info" onClick={
+                        () => navigate(`events/${id}`)
                     }>
-                        Ver más
+                        Ver más...
                     </button>
-            <p>{date}</p>
+            <p>{formatDate(date)}</p>
         </div>
     </div>
     </div>
@@ -40,15 +47,17 @@ function CarrouselContent(
     )
 }
 
-
+interface LinkProps {
+    id?: number|unknown;
+}
 function CarrouselLinks(
     {
         id
-    }:PropsWithChildren<Props>
+    }:PropsWithChildren<LinkProps>
 ) {
     return (
-        <a href={id as string} className="btn btn-xs">
-            <img src="/public/dot.svg" alt="a"/>
+        <a href={`#${id}`} className="btn btn-xs p-2">
+            <img src="/public/dot.svg" alt=""  className="w-full h-full"/>
         </a> 
     )
 }

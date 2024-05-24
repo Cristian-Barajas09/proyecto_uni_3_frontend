@@ -31,14 +31,14 @@ function Carrousel() {
             setEvents([])
         }
     },[createItem])
-    const sortedEvents = events.sort((a, b) => b.id - a.id);
+    const sortedEvents = events.sort((a, b) => a.id - b.id);
 
     // Get the latest 4 events
-    const latestEvents = sortedEvents.slice(0, 4);
+    const latestEvents = sortedEvents.slice(0, 2);
 
     return (
         <div>
-            <div className="carousel w-full">
+            <div className="carousel w-full h-96">
 
         {
             latestEvents.map(({title,id,image,date,description}) => (
@@ -48,7 +48,6 @@ function Carrousel() {
                         image={image}
                         description={description}
                         date={date}
-                        type='carouselcontent'
                         />
                 ))
             }
@@ -57,14 +56,9 @@ function Carrousel() {
             <div className="flex justify-center w-full py-2 gap-2">
 
 {
-    latestEvents.map(({title,id,image,date,description}) => (
+    latestEvents.map(({id}) => (
         <CarrouselLinks
-                        title={title}
                         id={id}
-                        image={image}
-                        description={description}
-                        date={date}
-                        type='carousellinks'
                         />
                     ))
                 }
