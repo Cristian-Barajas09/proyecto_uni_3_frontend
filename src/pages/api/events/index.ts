@@ -7,19 +7,14 @@ export const prerender = false;
 
 export const GET: APIRoute = async ({request}) => {
     const url = `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}`
+    console.log(url);
+    
     try {
         console.log(request.headers);
         const token = request.headers.get('Authorization')
         console.log(token);
-        if (!token) {
-            return json({error: 'No token provided'}, 401)
-        }
 
-        const res = await fetch(url, {
-            headers: {
-                'Authorization': token
-            }
-        })
+        const res = await fetch(url)
         const data = await res.json() as {data: IEvent[]}
         return json(data)
     } catch(err) {
