@@ -1,8 +1,6 @@
 import React, { type PropsWithChildren } from 'react'
-import { apiConnection } from '@lib/api/api'
 import type { IEvent } from '@lib/api/types'
 import { useCookies } from 'react-cookie'
-import { navigate } from 'astro:transitions/client'
 import { $createItem } from '@store/admin'
 import { useStore } from '@nanostores/react'
 import { CarrouselContent, CarrouselLinks } from './CarrouselContent'

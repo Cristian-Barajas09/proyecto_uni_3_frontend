@@ -57,7 +57,7 @@ function CarrouselLinks(
 ) {
     return (
         <a href={`#${id}`} className="btn btn-xs p-2">
-            <img src="/public/dot.svg" alt=""  className="w-full h-full"/>
+            <img src="/dot.svg" alt=""  className="w-full h-full"/>
         </a> 
     )
 }
