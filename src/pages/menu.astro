@@ -1,11 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro"
 import {MenuContent} from "@components/menu/MenuContent.tsx"
+import Boceto from "@components/menuUpdate/Boceto.astro";
 export const prerender = false;
 
 ---
 
 <Layout title="Menu">
-    <h1 class="w-full font-bold text-center mb-2">MENÚ</h1>
-    <MenuContent  client:load/>
+    <Boceto />
 </Layout>
