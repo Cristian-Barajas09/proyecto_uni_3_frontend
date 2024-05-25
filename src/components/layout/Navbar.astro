@@ -1,6 +1,6 @@
 ---
 import { MenuButton } from "./MenuButton.tsx"
-
+import { AuthNavbar } from "./AuthNavbar.tsx"
 
 const routes = [
     {
@@ -15,10 +15,6 @@ const routes = [
         url: "/events",
         title: "EVENTOS",
     },
-    {
-        url: '/login',
-        title: "INICIAR SESIÓN"
-    }
 ]
 ---
 <header class="navbar bg-base-100 fixed z-10 lg:static p-3 justify-between">
@@ -42,6 +38,7 @@ const routes = [
                     </li>
                 ))
             }
+            <AuthNavbar client:load/>
         </ul>
     </div>
 </header>

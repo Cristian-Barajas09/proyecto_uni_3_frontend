@@ -18,13 +18,17 @@ function CardAdmin(
 ) {
     return (
         <div className="card lg:w-64 w-full bg-base-100 shadow-xl">
-            <figure>
-                <img
-                    src={image ?? '/404.jpeg'}
-                    alt={title}
-                    className='rounded-t-lg w-full h-48 object-cover'
-                />
-            </figure>
+            {
+                image && (
+                    <figure>
+                        <img
+                            src={image ?? '/404.jpeg'}
+                            alt={title}
+                            className='rounded-t-lg w-full h-48 object-cover'
+                        />
+                    </figure>
+                )
+            }
             <div className="card-body">
                 <h2 className="card-title">
                     {title}

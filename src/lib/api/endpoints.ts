@@ -5,6 +5,8 @@ const ENDPOINTS = {
     AUTH: 'token',
     USER: 'users',
     PLATES: 'plates',
+    CATEGORIES: 'categories',
+    INGREDIENTS: 'ingredients',
 }
 
 

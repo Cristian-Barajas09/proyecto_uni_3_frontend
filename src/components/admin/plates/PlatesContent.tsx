@@ -1,16 +1,16 @@
-import type { IPlate } from "@lib/api/types"
+import type { IMenu } from "@lib/api/types"
 import React from "react"
 import { CardAdmin } from "../CardAdmin"
 
 function PlatesContent() {
 
-    const [plates, setPlates] = React.useState<IPlate[]>([])
+    const [plates, setPlates] = React.useState<IMenu[]>([])
 
     React.useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('/api/plates')
 
-            const { data } = await response.json() as { data: IPlate[] }
+            const { data } = await response.json() as { data: IMenu[] }
             setPlates(data)
         }
 
@@ -30,7 +30,7 @@ function PlatesContent() {
                         title={title}
                         id={id}
                         image={image}
-                        type='plates'
+                        type='menu/plates'
                     />
                 ))
             }
