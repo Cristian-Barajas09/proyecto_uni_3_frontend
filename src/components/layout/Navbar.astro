@@ -17,7 +17,7 @@ const routes = [
     },
 ]
 ---
-<header class="navbar bg-base-100 fixed z-10 lg:static p-3 justify-between">
+<header class="navbar bg-black h-20 fixed z-10 lg:static p-3 justify-between">
     <div class="">
         <a class="btn btn-ghost text-xl" href="/">
             <img src="/logo_footer.png" class="w-full h-full object-cover"/>
@@ -27,7 +27,7 @@ const routes = [
         <MenuButton client:load/>
     </div>
     <div class="hidden lg:block lg:w-1/2 lg:h-full w-full h-screen" id="navbar-menu">
-        <ul class="flex flex-col lg:flex-row">
+        <ul class="flex flex-col lg:flex-row justify-end">
             {
                 routes.map((route) => (
                     <li>
