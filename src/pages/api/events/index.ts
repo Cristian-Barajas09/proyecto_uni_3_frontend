@@ -5,29 +5,21 @@ import  type {IEvent} from '@lib/api/types.d'
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({request}) => {
+export const GET: APIRoute = async ({}) => {
     const url = `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}`
-    console.log(url);
-    
     try {
-        console.log(request.headers);
-        const token = request.headers.get('Authorization')
-        console.log(token);
 
         const res = await fetch(url)
-        const data = await res.json() as {data: IEvent[]}
+        const data = await res.json() as IEvent[]
+        console.log(data)
         return json(data)
     } catch(err) {
         return json({error: 'Error al obtener los eventos'})
     }
-
-
-    
 }
 
 export const POST: APIRoute = async ({request}) => {
     const url = `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/`
-    console.log(request.headers);
         try {
             const body = await request.formData()
 

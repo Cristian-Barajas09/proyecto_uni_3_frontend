@@ -20,8 +20,8 @@ const routes = [
         Icon: TicketIcon
     },
     {
-        title: "Platillos",
-        url: "/admin/plates",
+        title: "Menu",
+        url: "/admin/menu",
         Icon: Silverware
     },
     {

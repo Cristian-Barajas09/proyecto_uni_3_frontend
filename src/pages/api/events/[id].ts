@@ -8,26 +8,15 @@ export const prerender = false;
 export const GET: APIRoute = async ({params,request}) => {
 
     const id = Number(params.id);
-    const token = request.headers.get('Authorization')
 
-    if(!token) {
-        return json({error: "No token provided"}, 401)
-    }
 
     if (isNaN(id)) {
         return json({error: "Invalid ID"}, 400)
     }
 
-    const response = await fetch(
-        `${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}`,
-        {
-            headers: {
-                'Authorization': token
-            }
-        }
-    )
+    const response = await fetch(`${ENDPOINTS.BASE}/${ENDPOINTS.VERSION}/${ENDPOINTS.EVENTS}/${id}`,)
 
-    const {data} = await response.json() as {data: IEvent}
+    const data = await response.json() as  IEvent
 
 
 

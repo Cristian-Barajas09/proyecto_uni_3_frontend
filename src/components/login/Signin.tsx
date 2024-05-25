@@ -6,12 +6,14 @@ function SignIn() {
     const [email,setEmail] = React.useState("")
     const [password,setPassword] = React.useState("")
     const [error,setError] = React.useState("")
-    const [token,setToken] = useCookies(['token'])
+    const [token,setToken] = useCookies(['refreshToken','token'])
+
+
+    if(token.refreshToken) {
+        window.location.href = '/'
+    }
 
     React.useEffect(() => {
-        if(token.token) {
-            navigate('/')
-        }
 
         return () => {
             setEmail('')
@@ -41,8 +43,9 @@ function SignIn() {
                 return
             }
             return res.json()
-        }).then(({ data }) => {
+        }).then(({ data }: {data:{access:string,refresh: string}}) => {
             setToken('token',data.access)
+            setToken('refreshToken',data.refresh)
             return navigate('/')
         })
     }

@@ -1,7 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro"
+import {MenuContent} from "@components/menu/MenuContent.tsx"
 export const prerender = false;
 
 ---
 
-<Layout title="Menu"></Layout>
+<Layout title="Menu">
+    <h1 class="w-full font-bold text-center mb-2">MENÚ</h1>
+    <MenuContent  client:load/>
+</Layout>
