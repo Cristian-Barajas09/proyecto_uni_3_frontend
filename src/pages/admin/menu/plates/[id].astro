@@ -1,0 +1,16 @@
+---
+import LayoutAdmin from "@layouts/LayoutAdmin.astro"
+import {PlateInfo} from '@components/admin/plates/plate/PlateInfo.tsx'
+
+export const prerender = false
+
+const id = Number(Astro.params.id)
+
+---
+
+<LayoutAdmin title="Platillo">
+    <a href="/admin/menu/plates">
+        Volver al listado
+    </a>
+    <PlateInfo id={id} client:load />
+</LayoutAdmin>

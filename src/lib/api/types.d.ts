@@ -10,10 +10,18 @@ export type IEvent = {
     date: string;
 }
 
-export type IPlate = {
-    id: number,
-	title: string,
-	description: string,
-	image: string,
-	price: string | number
+export type IMenu = {
+    id: number;
+    image: string;
+    title: string;
+    price: number;
+    ingredients: string[];
+    categories: string[];
+    description: string;
+}
+
+export type ICategory = {
+    id: number;
+    title: string;
+    description: string;
 }

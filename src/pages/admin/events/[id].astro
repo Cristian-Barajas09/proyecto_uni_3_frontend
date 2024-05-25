@@ -1,4 +1,5 @@
 ---
+import { EventInfo } from "@components/admin/events/event/EventInfo";
 import LayoutAdmin from "@layouts/LayoutAdmin.astro";
 export const prerender = false;
 
@@ -11,4 +12,5 @@ const id = Number(Astro.params.id)
     <a href="/admin/events">
         Volver
     </a>
+    <EventInfo id={id} client:load />
 </LayoutAdmin>

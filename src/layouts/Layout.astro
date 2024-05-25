@@ -23,9 +23,15 @@ const { title } = Astro.props;
 	</head>
 	<body>
 			<Navbar />
-			<main>
+			<main class="relative top-28 mb-28">
 				<slot />
 			</main>
 			<FooterComponent />
 	</body>
 </html>
+
+<style>
+	body {
+		height: 100vh;
+	}
+</style>
