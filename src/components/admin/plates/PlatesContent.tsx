@@ -31,6 +31,7 @@ function PlatesContent() {
                         id={id}
                         image={image}
                         type='menu/plates'
+                        key={id}
                     />
                 ))
             }

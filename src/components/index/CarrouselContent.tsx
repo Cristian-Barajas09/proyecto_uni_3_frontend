@@ -35,10 +35,10 @@ function CarrouselContent(
         <p className="text-lg text-white">{description}</p>
         <div className=" flex justify-between">
         <button className="link link-warning text-lg" onClick={
-                        () => navigate(`events/${id}`)
-                    }>
-                        Ver más...
-                    </button>
+            () => navigate(`events/${id}`)
+        }>
+                Ver más...
+        </button>
             <p className="text-md text-white">{formatDate(date)}</p>
         </div>
     </div>
@@ -56,7 +56,7 @@ function CarrouselLinks(
     }:PropsWithChildren<LinkProps>
 ) {
     return (
-        <a href={`#${id}`} className="btn btn-xs p-2">
+        <a href={`#${id}`} className="btn btn-xs p-2" title="carousel-button">
             <img src="/dot.svg" alt=""  className="w-full h-full"/>
         </a> 
     )

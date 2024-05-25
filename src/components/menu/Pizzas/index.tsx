@@ -14,7 +14,7 @@ export function Pizzas({menuItems}: PropsWithChildren<{menuItems: IMenu[]}>) {
                             (item) => item.categories.some(category => category.toLowerCase() === "pizzas")
                         ).map((item) => (
                             <CardMenu
-                                key={item.title}
+                                key={item.id}
                                 title={item.title}
                                 price={item.price}
                                 image={item.image}

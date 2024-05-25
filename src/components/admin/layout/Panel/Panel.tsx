@@ -5,6 +5,7 @@ import { ListItem } from "./ListItem"
 import { TicketIcon } from "@components/icons/TicketIcon"
 import { Settings } from "@components/icons/SettingsIcon"
 import { HomeIcon } from "@components/icons/HomeIcon"
+import { QrIcon } from "@components/icons/QrIcon"
 
 
 
@@ -23,6 +24,11 @@ const routes = [
         title: "Menu",
         url: "/admin/menu",
         Icon: Silverware
+    },
+    {
+        title: "QR",
+        url: "/admin/qr",
+        Icon: QrIcon,
     },
     {
         title: "Configuración",

@@ -1,12 +1,20 @@
 
 import type { ICategory } from '@lib/api/types'
-import React from 'react'
+import React, { type PropsWithChildren } from 'react'
 import { useCookies } from 'react-cookie'
 import { $createItem } from '@store/admin'
 
+interface IForm {
+    title: string
+    description: string
+    price: number
+    categories: string[],
+    ingredients: string[]
+    id: number
+}
 
-function FormCreate({}) {
-
+function EditForm(props: PropsWithChildren<IForm>) {
+    console.log(props)
     const [form, setForm] = React.useState<{
         title: string
         description: string
@@ -15,13 +23,14 @@ function FormCreate({}) {
         categories: string[],
         ingredients: string[]
     }>({
-        title: '',
-        description: '',
-        price: 0,
+        title: props.title,
+        description: props.description,
+        price: props.price ,
         image: null,
-        categories: [],
-        ingredients: []
+        categories: props.categories,
+        ingredients: props.ingredients
     })
+    console.log(form)
 
     const [token] = useCookies(['token'])
 
@@ -50,20 +59,21 @@ function FormCreate({}) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('title', form.title)
-        formData.append('description', form.description)
+        formData.append('title', form?.title || '')
+        formData.append('description', form?.description || '')
         formData.append('price', String(form.price)) // format date in year-month
-        formData.append('image', form.image as Blob)
-
-        form.ingredients.forEach((ingredient) => {
+        if(form.image){
+            formData.append('image', form.image as Blob)
+        }
+        form.ingredients?.forEach((ingredient) => {
             formData.append(`ingredients`, ingredient)
         })
-        form.categories.forEach((category) => {
+        form.categories?.forEach((category) => {
             formData.append(`categories`, category)
         })
 
-        const res = await fetch('/api/plates', {
-            method: 'POST',
+        const res = await fetch(`/api/plates/${props.id}`, {
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token.token}`,
             },
@@ -123,6 +133,7 @@ function FormCreate({}) {
                             title: e.target.value
                         })
                     }}
+                    value={form.title}
                 />
             </div>
             <div className='flex flex-col gap-4 m-2'>
@@ -137,6 +148,7 @@ function FormCreate({}) {
                             description: e.target.value
                         })
                     }}
+                    value={form.description}
                 />
             </div>
             <div className='flex flex-col gap-4 m-2'>
@@ -151,6 +163,7 @@ function FormCreate({}) {
                             price: parseInt(e.target.value)
                         })
                     }}
+                    value={form.price}
                 />
             </div>
 
@@ -176,6 +189,7 @@ function FormCreate({}) {
                     className="input w-full p-2 border border-gray-300 rounded mb-4"
                     multiple
                     onChange={handleChangeCategories}
+                    value={form.categories}
                 >
                     {
                         categories.map((category) => (
@@ -191,6 +205,7 @@ function FormCreate({}) {
                     className="input w-full p-2 border border-gray-300 rounded mb-4"
                     multiple
                     onChange={handleChangeIngredientes}
+                    value={form.ingredients}
                 >
                     {
                         ingredients.map((ingredient) => (
@@ -206,7 +221,7 @@ function FormCreate({}) {
                         type="submit"
                         className="btn bg-red-500 text-white p-2 rounded hover:shadow-lg"
                     >
-                        Crear plato
+                        Guardar
                 </button>
             </div>
         </form>
@@ -215,5 +230,5 @@ function FormCreate({}) {
 
 
 export {
-    FormCreate
+    EditForm
 }
