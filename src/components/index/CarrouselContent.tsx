@@ -30,16 +30,16 @@ function CarrouselContent(
     return (
     <div id={id as string} className="carousel-item relative w-full bg-base-200 flex flex-col md:flex-row h-full">
     <img src={image ?? '/404.jpeg'} alt={title} className="md:w-1/2 w-full h-100" />
-    <div className= "flex flex-col md:w-1/2 w-full p-4 justify-around">
-        <p className="text-center">{title}</p>
-        <p>{description}</p>
+    <div className= "flex flex-col md:w-1/2 w-full p-4 justify-around bg-black">
+        <p className="text-center text-xl text-white">{title}</p>
+        <p className="text-lg text-white">{description}</p>
         <div className=" flex justify-between">
-        <button className="link link-info" onClick={
+        <button className="link link-warning text-lg" onClick={
                         () => navigate(`events/${id}`)
                     }>
                         Ver más...
                     </button>
-            <p>{formatDate(date)}</p>
+            <p className="text-md text-white">{formatDate(date)}</p>
         </div>
     </div>
     </div>
