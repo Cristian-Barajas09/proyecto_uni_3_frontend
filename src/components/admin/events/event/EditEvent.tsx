@@ -1,11 +1,17 @@
 import { apiConnection } from '@lib/api/api'
 import type { IEvent } from '@lib/api/types'
-import React from 'react'
+import React, { type PropsWithChildren } from 'react'
 import { useCookies } from 'react-cookie'
 import { $createItem } from '@store/admin'
 
+interface IForm {
+    title: string
+    description: string
+    date: string
+    id: number
+}
 
-function FormCreate() {
+function EditEvent(props:PropsWithChildren<IForm>) {
 
     const [form, setForm] = React.useState<{
         title: string
@@ -13,9 +19,9 @@ function FormCreate() {
         date: string
         image: File | null
     }>({
-        title: '',
-        description: '',
-        date: '',
+        title: props.title,
+        description: props.description,
+        date: props.date,
         image: null
     })
 
@@ -28,9 +34,11 @@ function FormCreate() {
         formData.append('title', form.title)
         formData.append('description', form.description)
         formData.append('date', form.date) // format date in year-month
-        formData.append('image', form.image as Blob)
-        const res = await fetch('/api/events', {
-            method: 'POST',
+        if(form.image){
+            formData.append('image', form.image as Blob)
+        }
+        const res = await fetch(`/api/events/${props.id}` , {
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token.token}`
             },
@@ -43,7 +51,16 @@ function FormCreate() {
 
     }
 
+    const formattedDate = () => {
+        const date = new Date(props.date)
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2); // Los meses en JavaScript empiezan en 0
+        const day = ('0' + date.getDate()).slice(-2);
+        const hours = ('0' + date.getHours()).slice(-2);
+        const minutes = ('0' + date.getMinutes()).slice(-2);
 
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
 
     return (
         <form onSubmit={handleSubmit} method='dialog'>
@@ -59,6 +76,7 @@ function FormCreate() {
                         title: e.target.value
                     })
                 }}
+                value={form.title}
             />
             <label htmlFor="">Descripción</label>
 
@@ -71,6 +89,7 @@ function FormCreate() {
                         description: e.target.value
                     })
                 }}
+                value={form.description}
             />
 
             <label htmlFor="form-date">Fecha del evento</label>
@@ -86,6 +105,7 @@ function FormCreate() {
                         date: formatDate
                     })
                 }}
+                value={formattedDate()}
             />
 
             <label htmlFor="">Imagen del evento</label>
@@ -106,7 +126,7 @@ function FormCreate() {
                     type="submit"
                     className="btn bg-red-500 text-white p-2 rounded hover:shadow-lg"
                 >
-                    Crear evento
+                    Guardar
             </button>
         </form>
     )
@@ -114,5 +134,5 @@ function FormCreate() {
 
 
 export {
-    FormCreate
+    EditEvent
 }

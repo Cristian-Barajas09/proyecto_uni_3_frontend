@@ -1,0 +1,12 @@
+---
+import LayoutAdmin from "@layouts/LayoutAdmin.astro";
+import {QrContent} from '@components/admin/qr/QrContent.tsx'
+export const prerender = false;
+---
+
+<LayoutAdmin title="QR">
+    <div class="container mx-auto">
+        <h1 class="text-2xl text-center font-bold">QR</hjson>
+    </div>
+    <QrContent client:load />
+</LayoutAdmin>

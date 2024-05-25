@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren } from 'react'
+import React from 'react'
 import type { IEvent } from '@lib/api/types'
 import { useCookies } from 'react-cookie'
 import { $createItem } from '@store/admin'
@@ -41,6 +41,7 @@ function Carrousel() {
         {
             latestEvents.map(({title,id,image,date,description}) => (
                     <CarrouselContent
+                        key={id}
                         title={title}
                         id={id}
                         image={image}
@@ -53,14 +54,12 @@ function Carrousel() {
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
 
-{
-    latestEvents.map(({id}) => (
-        <CarrouselLinks
-                        id={id}
-                        />
+                {
+                    latestEvents.map(({id}) => (
+                        <CarrouselLinks key={id} id={id}/>
                     ))
                 }
-                </div>
+            </div>
     
     </div>
     )
