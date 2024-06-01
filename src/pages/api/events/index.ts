@@ -1,5 +1,5 @@
 import {type APIRoute} from 'astro'
-import { apiConnection, json } from '@lib/api/api'
+import { json } from '@lib/api/api'
 import { ENDPOINTS } from '@lib/api/endpoints'
 import  type {IEvent} from '@lib/api/types.d'
 
@@ -14,7 +14,7 @@ export const GET: APIRoute = async ({}) => {
         console.log(data)
         return json(data)
     } catch(err) {
-        return json({error: 'Error al obtener los eventos'})
+        return json({error: 'Error al obtener los eventos'},400)
     }
 }
 
@@ -37,6 +37,6 @@ export const POST: APIRoute = async ({request}) => {
             return json({message: 'Event created'})
         } catch(err) {
             console.log(err);
-            return json({error: 'Error al crear el evento'})
+            return json({error: 'Error al crear el evento'},400)
         }
 }

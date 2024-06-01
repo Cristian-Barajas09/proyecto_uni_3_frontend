@@ -51,37 +51,32 @@ function SignIn() {
     }
 
     return (
-        <div className="flex h-screen items-center justify-center">
-            <div className="w-1/2 h-1/2 flex justify-center">
+        <div 
+            className="mt-20 lg:mt-3 flex p-2">
+            <div className="w-full flex flex-col justify-items-center  items-center">
+                <h1>Iniciar sesión</h1>
                 <form
-                    onSubmit={handleSubmit}
-                    className="flex flex-col gap-2 lg:w-1/2 lg:h-2/3 w-full h-full  shadow-lg justify-center items-center "
+                onSubmit={handleSubmit}
+                className="flex flex-col w-1/2 mt-5 gap-4"
                 >
-                    <div className="flex flex-col">
-                        <label htmlFor="">Email</label>
-                        <input
-                            title="Email"
-                            onChange={handleChangeEmail}
-                            type="text" className="border"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label htmlFor="">Contraseña</label>
-                        <input
-                            title="Contraseña"
-                            type="password"
-                            onChange={handleChangePassword}
-                            className="border"
-                        />
-                    </div>
-                    <div>
-                        <button
-                            type="submit"
-                            className="bg-black text-white py-2 px-5 cursor-pointer"
-                        >Iniciar Sesión</button>
-                        { error }
-                    </div>
+
+                        <label className="input input-bordered flex items-center gap-2" htmlFor="email">
+                            <input 
+                                type="email" id="email" value={email} onChange={handleChangeEmail} placeholder="Email" className="grow" />
+                        </label>
+
+                        <label className="input input-bordered flex items-center gap-2" htmlFor="password">
+                            <input type="password" id="password" value={password} onChange={handleChangePassword} placeholder="Contraseña" className="grow" />
+                        </label>
+                    <button type="submit" className="btn btn-primary w-full">Iniciar sesión</button>
+                    {error && <p>{error}</p>}
                 </form>
+            </div>
+            <div className="hidden lg:block w-full h-full">
+                <img
+                    src="/food-3594552_1280.jpg" alt="imagen de inicio"
+                    className="rounded-lg w-full h-full object-cover"
+                />
             </div>
         </div>
     )
