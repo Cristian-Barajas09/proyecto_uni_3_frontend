@@ -9,8 +9,11 @@ const id = Number(Astro.params.id)
 ---
 
 <LayoutAdmin title="Platillo">
-    <a href="/admin/menu/plates">
-        Volver al listado
-    </a>
+    <div class="w-full">
+        <a href="/admin/menu/plates" class="text-left btn">
+            Volver al listado
+        </a>
+    </div>
+    
     <PlateInfo id={id} client:load />
 </LayoutAdmin>

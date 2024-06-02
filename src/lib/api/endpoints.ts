@@ -7,6 +7,7 @@ const ENDPOINTS = {
     PLATES: 'plates',
     CATEGORIES: 'categories',
     INGREDIENTS: 'ingredients',
+    QR: 'qr',
 }
 
 
