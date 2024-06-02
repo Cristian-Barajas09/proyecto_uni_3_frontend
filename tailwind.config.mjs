@@ -13,15 +13,23 @@ export default {
 	daisyui: {
 		themes: [
 			{
-				"mytheme-light": {
-					"primary": "#FF00FF",
+				"light": {
+					"primary": "#FFF",
 					"secondary": "#00FF00",
 					"accent": "#0000FF",
 					"neutral": "#FFFFFF",
 					"base-100": "#f0f4f8",
-				}
+					"primary-text": "#000000",
+				},
+				"dark": {
+					"primary": "#000",
+					"secondary": "#00FF00",
+					"accent": "#0000FF",
+					"neutral": "#000000",
+					"base-100": "#1a202c",
+					"primary-text": "#FFFFFF",
+				},
 			},
-			'dark',
 		]
 	}
 }
