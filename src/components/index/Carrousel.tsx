@@ -52,7 +52,7 @@ function Carrousel() {
 
     return (
         <div>
-            <div className="carousel w-full h-96">
+            <div className="carousel w-auto h-auto">
         {
             latestEvents.map(({title,id,image,date,description}) => (
                     <CarrouselContent

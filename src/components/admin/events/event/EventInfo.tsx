@@ -18,7 +18,16 @@ function EventInfo({ id }: { id: number }) {
         fetchData()
     }, [id])
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        return `${day}/${month}/${year}`;
+      };
 
+      
     const handleClickDelete = async () => {
         await fetch(`/api/events/${id}`, {
             method: "DELETE",
@@ -58,7 +67,7 @@ function EventInfo({ id }: { id: number }) {
                                 {event.title}
                             </h1>
                             <p>{event.description}</p>
-                            <p>{event.date}</p>
+                            <p>{formatDate(event.date)}</p>
                             <div  className="flex gap-2">
                                 <button
                                     onClick={handleClickUpdate}

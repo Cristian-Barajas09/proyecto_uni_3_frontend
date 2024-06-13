@@ -27,7 +27,7 @@ const { title } = Astro.props;
 			<LogoComponent slot='logo'/>
 			<Navbar slot='nav' client:load />
 		</HeaderComponent>
-		<main class="relative p-2">
+		<main class="relative p-2 md:mt-0 mt-20">
 			<slot />
 		</main>
 		<FooterComponent />

@@ -28,18 +28,20 @@ function CarrouselContent(
 ) 
 {
     return (
-    <div id={id as string} className="carousel-item relative w-full bg-base-200 flex flex-col md:flex-row h-full">
-    <img src={image ?? '/404.jpeg'} alt={title} className="md:w-1/2 w-full h-100" />
-    <div className= "flex flex-col md:w-1/2 w-full p-4 justify-around bg-black">
-        <p className="text-center text-xl text-white">{title}</p>
-        <p className="text-lg text-white">{description}</p>
+    <div id={id as string} className="p-2 carousel-item relative w-full bg-base-200 flex flex-col md:flex-row h-full">
+    <div className="md:w-1/2 md:h-auto w-full h-full flex justify-center items-center bg-none">
+    <img src={image ?? '/404.jpeg'} alt={title} className="h-full max-h-96 w-auto" />
+    </div>
+    <div className= "flex flex-col md:w-1/2 w-full p-4 justify-around bg-none">
+        <p className="text-center uppercase text-6xl text-primary-text font-bold">{title}</p>
+        <p className="text-xl text-primary-text p-3">{description}</p>
         <div className=" flex justify-between">
         <button className="link link-warning text-lg" onClick={
             () => navigate(`events/${id}`)
         }>
                 Ver más...
         </button>
-            <p className="text-md text-white">{formatDate(date)}</p>
+            <p className="text-xl text-primary-text">{formatDate(date)}</p>
         </div>
     </div>
     </div>

@@ -20,6 +20,7 @@ export default {
 					"neutral": "#FFFFFF",
 					"base-100": "#f0f4f8",
 					"primary-text": "#000000",
+					"base-200":"#f6f9f9",
 				},
 				"dark": {
 					"primary": "#000",
@@ -28,6 +29,7 @@ export default {
 					"neutral": "#000000",
 					"base-100": "#1a202c",
 					"primary-text": "#FFFFFF",
+					"base-200":"#171819",
 				},
 			},
 		]

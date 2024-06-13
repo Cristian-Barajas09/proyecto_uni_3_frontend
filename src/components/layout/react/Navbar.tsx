@@ -52,7 +52,7 @@ function Navbar () {
                 <MenuButton show={isOpenButton} handleClick={handleClick}/>
             </div>
             <div
-                className={`${showMenu} lg:block lg:w-1/2 lg:h-full w-full h-screen`}
+                className={`${showMenu} lg:block lg:h-full w-full h-screen`}
                 id="navbar-menu">
                 <ul className="flex flex-col gap-2 lg:flex-row justify-end m-10 mt-20 lg:m-0 text-primary-text">
                     {
