@@ -2,7 +2,7 @@ import React from "react";
 import { AuthNavbar } from "./AuthNavbar"
 import { MenuButton } from "./MenuButton"
 import { ThemeButton } from "./ThemeButton";
-
+import { rtClass } from "@lib/utils/helpers";
 
 const routes = [
     {
@@ -41,18 +41,16 @@ function Navbar () {
         setIsOpenButton(!isOpenButton);
     }
 
-    const showMenu = isOpenButton ?
-    'fixed h-screen w-screen left-0 top-0 bg-primary' : 'hidden'
-
-    const showCloseButton = isOpenButton ? 'fixed top-0 right-0 z-10' : ''
 
     return (
         <>
-            <div className={`m-2 lg:hidden ${showCloseButton}`}>
+            <div className={`m-2 lg:hidden ${rtClass({'fixed top-0 right-0 z-10': isOpenButton})}`}>
                 <MenuButton show={isOpenButton} handleClick={handleClick}/>
             </div>
             <div
-                className={`${showMenu} lg:block lg:w-1/2 lg:h-full w-full h-screen`}
+                className={`${rtClass(
+                    { 'fixed h-screen w-screen left-0 top-0 bg-primary': isOpenButton, 'hidden': !isOpenButton }
+                )} lg:block lg:w-1/2 lg:h-full w-full h-screen`}
                 id="navbar-menu">
                 <ul className="flex flex-col gap-2 lg:flex-row justify-end m-10 mt-20 lg:m-0 text-primary-text">
                     {

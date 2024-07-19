@@ -2,8 +2,8 @@ import React from 'react'
 import type { IEvent } from '@lib/api/types'
 import { $createItem } from '@store/admin'
 import { useStore } from '@nanostores/react'
-import { CarrouselContent, CarrouselLinks } from './CarrouselContent'
-
+import { CarrouselContent } from './CarrouselContent'
+import { CarrouselLinks } from './CarrouselLinks'
 function Carrousel() {
     const [events, setEvents] = React.useState<IEvent[]>([])
     const [error,setError] = React.useState<boolean>(false)
