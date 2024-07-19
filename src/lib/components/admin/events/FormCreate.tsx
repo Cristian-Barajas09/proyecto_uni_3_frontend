@@ -3,6 +3,8 @@ import type { IEvent } from '@lib/api/types'
 import React from 'react'
 import { useCookies } from 'react-cookie'
 import { $createItem } from '@store/admin'
+import { useStore } from '@nanostores/react'
+import { $events } from '@store/global'
 
 
 function FormCreate() {
@@ -18,6 +20,8 @@ function FormCreate() {
         date: '',
         image: null
     })
+
+    const events = useStore($events)
 
     const [token] = useCookies(['token'])
 
@@ -39,6 +43,7 @@ function FormCreate() {
 
         if(res.ok) {
             $createItem.set(true)
+            $events.set([...events, await res.json() as IEvent])
         }
 
     }

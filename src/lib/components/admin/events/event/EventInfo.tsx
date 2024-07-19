@@ -4,15 +4,27 @@ import React from "react"
 import { useCookies } from "react-cookie"
 import { EditEvent } from "./EditEvent"
 import { CrossIcon } from "@components/icons/CrossIcon"
+import { $events } from "@store/global"
+import { useStore } from "@nanostores/react"
 
 function EventInfo({ id }: { id: number }) {
-    const [event, setEvent] = React.useState<IEvent>()
+    const events = useStore($events)
+    const event = events.find(event => event.id === id)
     const [token] = useCookies(['token'])
+
     React.useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`/api/events/${id}`)
-            const data = await response.json()
-            setEvent(data)
+            if(events.length > 0) return
+
+            const response = await fetch('/api/events', {
+                headers: {
+                    'Authorization': `Bearer ${token.token}`
+                },
+            })
+
+
+            const data = await response.json() as IEvent[]
+            $events.set(data)
         }
 
         fetchData()
@@ -26,6 +38,9 @@ function EventInfo({ id }: { id: number }) {
                 'Authorization': `Bearer ${token.token}`
             }
         })
+
+        $events.set(events.filter(event => event.id !== id))
+
         return navigate("/admin/events")
     }
 

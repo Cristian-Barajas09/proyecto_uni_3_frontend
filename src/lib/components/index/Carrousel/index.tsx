@@ -4,13 +4,18 @@ import { $createItem } from '@store/admin'
 import { useStore } from '@nanostores/react'
 import { CarrouselContent } from './CarrouselContent'
 import { CarrouselLinks } from './CarrouselLinks'
+import { RtFor } from '@components/utils/RtFor'
+import { $events } from '@store/global'
+
 function Carrousel() {
-    const [events, setEvents] = React.useState<IEvent[]>([])
+    const events = useStore($events);
     const [error,setError] = React.useState<boolean>(false)
-    const createItem = useStore($createItem)
+    const createItem = useStore($createItem);
 
     React.useEffect(() => {
         const fetchData = async () => {
+            if(events.length > 0) return
+
             const response = await fetch('/api/events')
 
             if(!response.ok){
@@ -19,14 +24,13 @@ function Carrousel() {
                 return
             }
             const data = await response.json() as IEvent[]
-            setEvents(data)
+            $events.set(data)
         }
 
         fetchData()
 
         return () => {
             console.log("Cleanup")
-            setEvents([])
         }
     },[createItem])
 
@@ -53,27 +57,31 @@ function Carrousel() {
     return (
         <div>
             <div className="carousel w-full h-96">
-        {
-            latestEvents.map(({title,id,image,date,description}) => (
-                    <CarrouselContent
-                        key={id}
-                        title={title}
-                        id={id}
-                        image={image}
-                        description={description}
-                        date={date}
-                        />
-                ))
-            }
+                <RtFor iterable={latestEvents}>
+                    {
+                        (({title,id,image,date,description}) => (
+                            <CarrouselContent
+                                key={id}
+                                title={title}
+                                id={id}
+                                image={image}
+                                description={description}
+                                date={date}
+                            />
+                        ))
+                    }
+                </RtFor>
 
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
 
-                {
-                    latestEvents.map(({id}) => (
-                        <CarrouselLinks key={id} id={id}/>
-                    ))
-                }
+                <RtFor iterable={latestEvents}>
+                    {
+                        ({id}) => (
+                            <CarrouselLinks id={id} key={id} />
+                        )
+                    }
+                </RtFor>
             </div>
     
     </div>
