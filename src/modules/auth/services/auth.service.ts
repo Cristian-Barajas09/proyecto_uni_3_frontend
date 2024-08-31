@@ -1,7 +1,7 @@
 import API_CONTANTS from "@/shared/constants/api.constants";
 import { LoginResponse } from "../interfaces/login.interfaces";
 
-export class AuthService {
+class AuthService {
 
     private readonly baseUrl = `${API_CONTANTS.API_URL}/${API_CONTANTS.API_VERSION}`;
 
