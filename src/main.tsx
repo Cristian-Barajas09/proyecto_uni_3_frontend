@@ -6,7 +6,10 @@ import store from '@shared/store/store'
 import './index.css'
 
 
-createRoot(document.getElementById('root')!).render(
+const app = createRoot(document.getElementById('root')!)
+
+
+app.render(
   <StrictMode>
     <Provider store={store}>
       <App />

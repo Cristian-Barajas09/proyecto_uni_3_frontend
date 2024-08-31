@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react"
 import "./cards-menu.css"
 import PlusIcon from "@shared/icons/plus-icon.svg"
+
 interface CardProps{
     image:string;
     title:string;
@@ -22,7 +23,7 @@ function CardMenu({image,title,description,price}: PropsWithChildren<CardProps>)
             <section className="card-menu-right-bottom">
                 <p className="card-menu-right-bottom-price"><span className="price-format">USD</span> {price}</p>
                 <button type="button" className="card-menu-right-bottom-btn">
-                   <img src={PlusIcon} alt="ver más" />
+                    <img src={PlusIcon} alt="ver más" />
                 </button>
             </section>
         </section>
