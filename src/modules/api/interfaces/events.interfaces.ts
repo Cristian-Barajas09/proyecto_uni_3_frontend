@@ -1,9 +1,9 @@
-export interface Events{
+export interface Event{
     id: number,
-    title : String,
-    image: String,
-    description : String,
-    created_at : String,
-    updated_at : String,
+    title : string,
+    image: string,
+    description : string,
+    created_at : string,
+    updated_at : string,
     deleted_at : null
 }
