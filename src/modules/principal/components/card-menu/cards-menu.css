@@ -66,6 +66,7 @@
     border-radius: 50%;
     border-color: transparent;
     margin-right: 1.5rem;
+    cursor: pointer ;
 }
 
 .card-menu-right-bottom-btn img{
