@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from '@modules/auth/features/authSlice'
 import platesReducer from '@modules/principal/features/plates.slice'
+import eventsReducer from '@modules/principal/features/events.slice'
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        plates: platesReducer
+        plates: platesReducer,
+        events: eventsReducer
     }
 })
 
