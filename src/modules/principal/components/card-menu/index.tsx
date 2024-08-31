@@ -1,15 +1,17 @@
 import { PropsWithChildren } from "react"
 import "./cards-menu.css"
 import PlusIcon from "@shared/icons/plus-icon.svg"
+
 interface CardProps{
     image:string;
     title:string;
     description:string;
     price: string;
-
+    addToCart: () => void;
 }
 
-function CardMenu({image,title,description,price}: PropsWithChildren<CardProps>){
+function CardMenu({image,title,description,price, addToCart}: PropsWithChildren<CardProps>){
+
     return(
         <article className="card-menu">
 
@@ -21,8 +23,8 @@ function CardMenu({image,title,description,price}: PropsWithChildren<CardProps>)
                 <p className="card-menu-right-description">{description}</p>
             <section className="card-menu-right-bottom">
                 <p className="card-menu-right-bottom-price"><span className="price-format">USD</span> {price}</p>
-                <button type="button" className="card-menu-right-bottom-btn">
-                   <img src={PlusIcon} alt="ver más" />
+                <button type="button" className="card-menu-right-bottom-btn" onClick={addToCart}>
+                    <img src={PlusIcon} alt="ver más" />
                 </button>
             </section>
         </section>
