@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    background-color: black;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+
+.card-menu-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+.card-menu{
+    border-radius: 25px;
+    width: 47%;    
+    height: auto;
+    max-height: 15rem;
+    padding: 1rem;
+    display: flex;
+    border-bottom: 2px solid rgb(55, 55, 55) ;
+    grid-column: span 1;
+    @media  (max-width: 768px) {
+        width: 100%;
+        
+    }
+}
+.card-menu-left{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-menu-left img{
+    height: 100px;
+    width: 150px;
+}
+
+.card-menu-right{
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.card-menu-right-title{
+    text-transform: uppercase;
+    color: yellow;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.card-menu-right-description{
+    color: rgb(195, 187, 187);
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.card-menu-right-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-menu-right-bottom-price{
+    color: yellow;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.card-menu-right-bottom-btn{
+    background-color: yellow;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border-color: transparent;
+    margin-right: 1.5rem;
+}
+
+.card-menu-right-bottom-btn img{
+    background-color: yellow;
+    height: 1.5rem;
+    width: 1.5rem;
+}

@@ -3,6 +3,8 @@ import { getPlatesAsync } from "../../features/plates.slice"
 import { RootState } from "@/shared/store/store"
 import { useEffect } from "react"
 import { AppDispatch } from "@/shared/store/store"
+import { CardMenu } from "../../components/card-menu"
+import "./index.css"
 
 export function MenuPage() {
     const plates = useSelector((state: RootState) => state.plates.plates)
@@ -14,15 +16,22 @@ export function MenuPage() {
 
     return (
         <div>
-            <h1>Menu</h1>
+            <div className="card-menu-container">
+
             {
                 plates.map(plate => (
-                    <div key={plate.id}>
-                        <h2>{plate.title}</h2>
-                        <p>{plate.price}</p>
-                    </div>
+                    
+                    <CardMenu
+                    title={plate.title}
+                    image={plate.image}
+                    description={plate.description}
+                    price={plate.price}
+                    key={plate.id}
+                    />
+                    
                 ))
             }
         </div>
+    </div>
     )
 }
