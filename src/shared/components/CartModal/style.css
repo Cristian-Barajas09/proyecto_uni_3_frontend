@@ -43,4 +43,46 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: auto;
+    height: 63%;
+    scrollbar-color: #f0c14b #111;
+    scrollbar-color: #f0c14b #111;
+    scrollbar-width: thin;
+}
+
+
+/* Chrome, Edge, and Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .cart-modal-content {
+        scrollbar-color: #f0c14b #111;
+        scrollbar-width: thin;
+    }
+}
+
+/* Firefox */
+@supports (-moz-appearance: none) {
+    .cart-modal-content {
+        scrollbar-color: #f0c14b #111;
+        scrollbar-width: thin;
+    }
+}
+
+.cart-modal-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+}
+
+.cart-modal__pay button {
+    background-color: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
 }

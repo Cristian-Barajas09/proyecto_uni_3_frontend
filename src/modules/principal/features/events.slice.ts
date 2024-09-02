@@ -15,7 +15,7 @@ export const getEventsAsync = createAsyncThunk(
         try {
             const response = await eventsService.getEvents();
 
-            dispatch(setEvents(response));
+            dispatch(setEvents(response.results));
         } catch (error) {
             console.log(error);
         }

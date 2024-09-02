@@ -1,0 +1,18 @@
+.paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+/*paginator is a button*/
+.paginator__item {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.paginator__item--active {
+    background-color: #ccc;
+}
