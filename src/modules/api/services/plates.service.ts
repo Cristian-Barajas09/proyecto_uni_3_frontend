@@ -1,4 +1,4 @@
-import { Plate } from "../interfaces/plates.interfaces";
+import { PlatesResponse } from "../interfaces/plates.interfaces";
 import { ServiceAuth } from "../interfaces/service.interfaces";
 import API_CONTANTS from "@/shared/constants/api.constants";
 
@@ -9,15 +9,20 @@ class PlatesService implements ServiceAuth {
     private token?: string;
 
 
-    async getAll(): Promise<Plate[]> {
+    async getAll(currentPage = 1): Promise<PlatesResponse> {
         try {
-            const response = await fetch(`${this.BASE_URL}/plates`)
+
+            const query = new URLSearchParams();
+
+            query.set('page', currentPage.toString());
+
+            const response = await fetch(`${this.BASE_URL}/plates?${query.toString()}`)
 
             if(!response.ok){
                 throw new Error(`Error en la solicitud : ${response.statusText}`)
             }
 
-            const data: Plate[] = await response.json();
+            const data: PlatesResponse = await response.json();
 
             return data
         }catch(error){

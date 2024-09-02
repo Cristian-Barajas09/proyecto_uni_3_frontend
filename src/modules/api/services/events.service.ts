@@ -1,4 +1,4 @@
-import {  Event } from "../interfaces/events.interfaces";
+import {  EventsResponse } from "../interfaces/events.interfaces";
 import { ServiceAuth } from "../interfaces/service.interfaces";
 import API_CONTANTS from "@/shared/constants/api.constants";
 
@@ -6,7 +6,7 @@ class EventsService implements ServiceAuth{
     private readonly BASE_URLS =  `${API_CONTANTS.API_URL}/${API_CONTANTS.API_VERSION}`
     private token? : string
 
-    async getEvents() : Promise<Event[]>{
+    async getEvents() : Promise<EventsResponse>{
         try{
             const response = await fetch(`${this.BASE_URLS}/events`)
 
@@ -14,7 +14,7 @@ class EventsService implements ServiceAuth{
                 throw new Error (`Fallo en la solicitud : ${response.statusText}`)
             }
 
-            const data : Event[] = await response.json();
+            const data : EventsResponse = await response.json();
             return data
 
         }catch(error){

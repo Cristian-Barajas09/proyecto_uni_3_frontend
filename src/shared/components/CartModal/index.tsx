@@ -74,6 +74,13 @@ function CartModal() {
                             )
                         }
                     </div>
+                    <div className="cart-modal-total">
+                        <p>Total</p>
+                        <p>$ {cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)}</p>
+                    </div>
+                    <div className="cart-modal__pay">
+                        <button type="button">Pagar</button>
+                    </div>
                 </div>
             </div>
         )

@@ -21,6 +21,7 @@ export const loginAsync = createAsyncThunk(
         try {
             const response = await AuthService.login(credentials.username, credentials.password);
             cookies.set('token', response.access);
+            cookies.set('user', JSON.stringify(response.user));
             dispatch(login())
         } catch (error) {
             console.log(error);

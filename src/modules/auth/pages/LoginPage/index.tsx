@@ -1,7 +1,10 @@
+// imports
 import React from "react"
 import { useDispatch } from "react-redux"
 import { loginAsync } from "../../features/authSlice"
 import { AppDispatch } from '@shared/store/store'
+import './styles.css';
+
 export function LoginPage() {
     // todo: add structure and styles here XD
 
@@ -26,18 +29,20 @@ export function LoginPage() {
 
     return (
         <div>
-            <h1>Login</h1>
+            <section className="login-header">
+                <h1>Login</h1>
+            </section>
             <section>
-                <form onSubmit={handleSubmit}>
-                    <div>
+                <form onSubmit={handleSubmit} className="form">
+                    <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" value={email} onChange={handleChangeEmail} />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" value={password} onChange={handleChagePassword} />
                     </div>
-                    <button type="submit">Login</button>
+                    <button className="save-button" type="submit">Login</button>
                 </form>
             </section>
         </div>
